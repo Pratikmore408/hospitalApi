@@ -1,5 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors';
+
 import { connectToDb } from './src/config/mongoose.js';
 import doctorRouter from './src/features/users/doctors/doctors.routes.js';
 import patientRouter from './src/features/users/patients/patients.routes.js';
@@ -14,6 +16,9 @@ dotenv.config();
 
 // parse the json
 server.use(express.json());
+
+// cors configuration
+server.use(cors());
 
 // using the appropriate routers for diff URLs
 server.use('/doctors', doctorRouter);

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// create report schema
 export const ReportSchema = mongoose.Schema({
     patients:[
         {

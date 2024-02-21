@@ -1,4 +1,4 @@
-
+// patient model
 export default class PatientModel {
     constructor(name, age, contactNumber, gender){
         this.name = name;

@@ -6,12 +6,16 @@ import patientRouter from './src/features/users/patients/patients.routes.js';
 import jwtAuth from './src/middleware/jwt.middleware.js';
 import reportRouter from './src/features/reports/report.routes.js';
 
+// getting the server
 const server = express();
 
+// access the .env files
 dotenv.config();
 
+// parse the json
 server.use(express.json());
 
+// using the appropriate routers for diff URLs
 server.use('/doctors', doctorRouter);
 
 server.use('/patients', jwtAuth,patientRouter);
@@ -22,8 +26,9 @@ server.use('/', (req, res)=>{
     res.status(200).send('Welcome to Hospital Api');
 })
 
-
+// listening to server
 server.listen(2000, ()=>{
     console.log('server is listening on port 2000');
+    // connecting to database
     connectToDb();
 });

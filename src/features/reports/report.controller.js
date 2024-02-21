@@ -10,8 +10,8 @@ export default class ReportController {
     async getReportByStatus(req, res){
         const status = req.params.status;
         try{
+            // get the reports from db and return
             const reports = await this.reportRepository.getAllReports(status);
-            // console.log(reports);
             res.status(200).send(reports);
 
         }catch(err){

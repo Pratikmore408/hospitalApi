@@ -24,6 +24,7 @@ const jwtAuth = (req, res, next)=>{
         res.status(401).send('Unauthorized');
     }
 
+    // call next middleware
     next();
 }
 

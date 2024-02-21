@@ -13,12 +13,15 @@ const ReportModel = mongoose.model('Report', ReportSchema);
 export default class PatientRepository{
     async register(user){
         try{
+            // check if there is already a user
             const existingUser = await PatientModel.findOne(user);
+            // if no user ther create one
             if(!existingUser){
                 const newUser =  new PatientModel(user);
                 await newUser.save();
                 return newUser;
             }else{
+                // if user exist then return user
                 return existingUser;
             }
             
@@ -29,6 +32,7 @@ export default class PatientRepository{
     }
 
     async create(userID, status ,patientID){
+        // find the doctor using userID
         const doctor = await DoctorModel.findById(userID);
         try{
             const newReport = new ReportModel({
@@ -48,16 +52,18 @@ export default class PatientRepository{
 
         }catch(err){
             console.log('error in creating report' + err);
+            throw err;
         }
     }
 
     async getAllReports(patientID){
         try{
+            // get all the reports from report collection using patient id
             const allReport = await ReportModel.find({patients: patientID});
-            // console.log(allReport);
             return allReport
         }catch(err){
             console.log('error in fetching report' + err);
+            throw err;
         }
     }
 

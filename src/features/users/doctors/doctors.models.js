@@ -1,4 +1,4 @@
-
+// create doctor model
 export default class DoctorModel{
     constructor(email, password, name, contactNumber){
         this.email = email;

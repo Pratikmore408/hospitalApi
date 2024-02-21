@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// create doctor schema
 export const DoctorSchema = mongoose.Schema({
     name:{type: String, required: true},
     email:{type: String, unique: true, required: true,
@@ -7,11 +8,4 @@ export const DoctorSchema = mongoose.Schema({
     },
     password:String,
     contactNumber:Number,
-    // reports:[
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'Report'
-    //     }
-    // ],
-
 })
